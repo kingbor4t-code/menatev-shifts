@@ -44,14 +44,27 @@ def inject_responsive_css():
             }
             .shift-table th,
             .shift-table td {
-                padding: 8px;
+                padding: 12px;
                 text-align: center;
+                font-size: 15px;
                 white-space: nowrap;
+            }
+            .shift-table th {
+                font-size: 16px;
+                font-weight: 700;
+            }
+            .shift-table td {
+                font-size: 14px;
+            }
+            .table-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 0;
             }
             @media (max-width: 768px) {
                 .block-container {
-                    padding-left: 0.6rem !important;
-                    padding-right: 0.6rem !important;
+                    padding-left: 0.5rem !important;
+                    padding-right: 0.5rem !important;
                 }
                 .stRadio > div {
                     flex-direction: column;
@@ -66,21 +79,31 @@ def inject_responsive_css():
                     padding: 0;
                     overflow-x: auto;
                     -webkit-overflow-scrolling: touch;
+                    width: 100vw;
+                    margin-left: calc(-50vw + 50%);
                 }
                 .shift-table {
-                    display: block;
-                    overflow-x: auto;
-                    white-space: nowrap;
+                    width: auto;
+                    min-width: 100%;
                 }
                 .shift-table th,
                 .shift-table td {
-                    padding: 6px 7px;
-                    font-size: 0.8rem;
+                    padding: 14px 10px;
+                    font-size: 16px;
                     white-space: normal;
+                    word-break: break-word;
+                }
+                .shift-table th {
+                    font-size: 17px;
+                    font-weight: 700;
+                    padding: 16px 10px;
                 }
                 .shift-table th:first-child,
                 .shift-table td:first-child {
-                    min-width: 120px;
+                    min-width: 130px;
+                }
+                .shift-table td {
+                    min-width: 90px;
                 }
             }
         </style>
@@ -574,13 +597,13 @@ if page == "שיבוץ":
 
                 table_html = f'''
                     <style>
-                        .table-wrapper {{display: flex; justify-content: center; width: 100%; max-width: 100%; margin: 0 auto; padding: 0;}}
-                        .shift-table {{border-collapse: collapse; width: 100%; margin: 0 auto; table-layout: auto; direction: rtl; unicode-bidi: plaintext;}}
-                        .shift-table th, .shift-table td {{border: 1px solid #444; padding: 8px; text-align: center; white-space: nowrap;}}
-                        .shift-table th {{background: #1f2937; color: #fff;}}
-                        .shift-table tr:nth-child(even) {{background: rgba(255,255,255,0.03);}}
-                        .shift-table td {{min-width: 96px;}}
-                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 150px;}}
+                        .table-wrapper {{display: flex; justify-content: center; width: 100%; max-width: 100%; margin: 0 auto; padding: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;}}
+                        .shift-table {{border-collapse: collapse; width: auto; margin: 0 auto; table-layout: auto; direction: rtl; unicode-bidi: plaintext;}}
+                        .shift-table th, .shift-table td {{border: 1px solid #555; padding: 14px 10px; text-align: center; font-size: 16px; line-height: 1.4;}}
+                        .shift-table th {{background: #1f2937; color: #fff; font-weight: 700; font-size: 17px;}}
+                        .shift-table tr:nth-child(even) {{background: rgba(255,255,255,0.02);}}
+                        .shift-table td {{min-width: 100px;}}
+                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 140px;}}
                     </style>
                     <div class="table-wrapper">
                         <table class="shift-table">
