@@ -89,18 +89,19 @@ def inject_responsive_css():
                 }
                 .shift-table th,
                 .shift-table td {
-                    padding: 13px 8px;
-                    font-size: 16px;
+                    padding: 9px 5px;
+                    font-size: 13px;
                     white-space: normal;
                     word-break: break-word;
                     overflow-wrap: break-word;
                     font-weight: 500;
-                    letter-spacing: 0.2px;
+                    letter-spacing: 0px;
+                    line-height: 1.2;
                 }
                 .shift-table th {
-                    font-size: 17px;
+                    font-size: 14px;
                     font-weight: 700;
-                    padding: 14px 7px;
+                    padding: 10px 4px;
                 }
                     padding: 11px 5px;
                 }
@@ -618,28 +619,28 @@ if page == "שיבוץ":
                             table-layout: fixed;
                             direction: rtl;
                             unicode-bidi: plaintext;
+                            font-family: Arial, sans-serif;
                         }}
                         .shift-table th, .shift-table td {{
                             border: 1px solid #555;
-                            padding: 13px 8px;
+                            padding: 9px 5px;
                             text-align: center;
-                            font-size: 16px;
-                            line-height: 1.4;
+                            font-size: 13px;
+                            line-height: 1.2;
                             word-break: break-word;
                             overflow-wrap: break-word;
                             font-weight: 500;
-                            letter-spacing: 0.2px;
                         }}
                         .shift-table th {{
                             background: #1f2937;
                             color: #fff;
                             font-weight: 700;
-                            font-size: 17px;
-                            padding: 14px 7px;
+                            font-size: 14px;
+                            padding: 10px 4px;
                         }}
                         .shift-table tr:nth-child(even) {{background: rgba(255,255,255,0.02);}}
-                        .shift-table td {{min-width: 75px;}}
-                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 105px;}}
+                        .shift-table td {{min-width: 65px;}}
+                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 95px;}}
                     </style>
                     <div class="table-wrapper">
                         <table class="shift-table">
