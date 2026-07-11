@@ -6,6 +6,91 @@ import pandas as pd
 import random
 from ortools.sat.python import cp_model
 
+st.set_page_config(page_title="מערכת שיבוץ", page_icon="🪖", layout="wide", initial_sidebar_state="collapsed")
+
+
+def inject_responsive_css():
+    st.markdown(
+        """
+        <style>
+            :root {
+                color-scheme: dark;
+            }
+            .block-container {
+                padding-top: 1rem !important;
+                padding-bottom: 3rem !important;
+            }
+            [data-testid="stSidebar"] {
+                background: #111827;
+            }
+            [data-testid="stSidebarContent"] {
+                padding-top: 0.75rem;
+            }
+            .stButton > button,
+            .stDownloadButton > button,
+            .stFormSubmitButton > button {
+                min-height: 44px;
+                border-radius: 10px;
+            }
+            .stButton > button,
+            .stFormSubmitButton > button {
+                width: 100%;
+            }
+            .shift-table {
+                width: 100%;
+                border-collapse: collapse;
+                direction: rtl;
+                unicode-bidi: plaintext;
+            }
+            .shift-table th,
+            .shift-table td {
+                padding: 8px;
+                text-align: center;
+                white-space: nowrap;
+            }
+            @media (max-width: 768px) {
+                .block-container {
+                    padding-left: 0.6rem !important;
+                    padding-right: 0.6rem !important;
+                }
+                .stRadio > div {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .stButton > button,
+                .stFormSubmitButton > button {
+                    width: 100%;
+                    font-size: 1rem;
+                }
+                .table-wrapper {
+                    padding: 0;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+                .shift-table {
+                    display: block;
+                    overflow-x: auto;
+                    white-space: nowrap;
+                }
+                .shift-table th,
+                .shift-table td {
+                    padding: 6px 7px;
+                    font-size: 0.8rem;
+                    white-space: normal;
+                }
+                .shift-table th:first-child,
+                .shift-table td:first-child {
+                    min-width: 120px;
+                }
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+inject_responsive_css()
+
 # יצירת חיבור למסד הנתונים
 base_dir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(base_dir, 'my_shifts.db')
@@ -489,13 +574,13 @@ if page == "שיבוץ":
 
                 table_html = f'''
                     <style>
-                        .table-wrapper {{display: flex; justify-content: center; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 8px;}}
-                        .shift-table {{border-collapse: collapse; width: auto; margin: 0 auto; table-layout: auto; direction: rtl; unicode-bidi: plaintext;}}
+                        .table-wrapper {{display: flex; justify-content: center; width: 100%; max-width: 100%; margin: 0 auto; padding: 0;}}
+                        .shift-table {{border-collapse: collapse; width: 100%; margin: 0 auto; table-layout: auto; direction: rtl; unicode-bidi: plaintext;}}
                         .shift-table th, .shift-table td {{border: 1px solid #444; padding: 8px; text-align: center; white-space: nowrap;}}
                         .shift-table th {{background: #1f2937; color: #fff;}}
                         .shift-table tr:nth-child(even) {{background: rgba(255,255,255,0.03);}}
-                        .shift-table td {{min-width: 108px;}}
-                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 220px;}}
+                        .shift-table td {{min-width: 96px;}}
+                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 150px;}}
                     </style>
                     <div class="table-wrapper">
                         <table class="shift-table">
