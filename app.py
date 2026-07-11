@@ -44,17 +44,17 @@ def inject_responsive_css():
             }
             .shift-table th,
             .shift-table td {
-                padding: 12px;
+                padding: 14px 10px;
                 text-align: center;
-                font-size: 15px;
+                font-size: 16px;
                 white-space: nowrap;
             }
             .shift-table th {
-                font-size: 16px;
+                font-size: 17px;
                 font-weight: 700;
             }
             .shift-table td {
-                font-size: 14px;
+                font-size: 15px;
             }
             .table-wrapper {
                 overflow-x: auto;
@@ -89,7 +89,7 @@ def inject_responsive_css():
                 }
                 .shift-table th,
                 .shift-table td {
-                    padding: 9px 5px;
+                    padding: 13px 8px;
                     font-size: 13px;
                     white-space: normal;
                     word-break: break-word;
@@ -101,16 +101,16 @@ def inject_responsive_css():
                 .shift-table th {
                     font-size: 14px;
                     font-weight: 700;
-                    padding: 10px 4px;
+                    padding: 14px 7px;
                 }
                     padding: 11px 5px;
                 }
                 .shift-table th:first-child,
                 .shift-table td:first-child {
-                    min-width: 100px;
+                    min-width: 106px;
                 }
                 .shift-table td {
-                    min-width: 70px;
+                    min-width: 76px;
                 }
             }
         </style>
@@ -605,28 +605,29 @@ if page == "שיבוץ":
                 table_html = f'''
                     <style>
                         .table-wrapper {{
-                            width: 100vw;
-                            margin-left: calc(-50vw + 50%);
+                            width: 100%;
+                            max-width: 100%;
                             overflow-x: auto;
                             -webkit-overflow-scrolling: touch;
                             display: block;
                             padding: 0;
                             position: relative;
+                            margin: 0 auto;
                         }}
                         .shift-table {{
                             border-collapse: collapse;
                             width: 100%;
-                            table-layout: fixed;
+                            table-layout: auto;
                             direction: rtl;
                             unicode-bidi: plaintext;
                             font-family: Arial, sans-serif;
                         }}
                         .shift-table th, .shift-table td {{
                             border: 1px solid #555;
-                            padding: 8px 5px;
+                            padding: 14px 10px;
                             text-align: center;
-                            font-size: 12.5px;
-                            line-height: 1.25;
+                            font-size: 16px;
+                            line-height: 1.3;
                             word-break: break-word;
                             overflow-wrap: break-word;
                             font-weight: 500;
@@ -635,12 +636,29 @@ if page == "שיבוץ":
                             background: #1f2937;
                             color: #fff;
                             font-weight: 700;
-                            font-size: 13px;
-                            padding: 9px 5px;
+                            font-size: 17px;
+                            padding: 15px 10px;
                         }}
                         .shift-table tr:nth-child(even) {{background: rgba(255,255,255,0.02);}}
-                        .shift-table td {{min-width: 76px;}}
-                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 106px;}}
+                        .shift-table td {{min-width: 90px;}}
+                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 130px;}}
+                        
+                        @media (max-width: 768px) {{
+                            .table-wrapper {{
+                                width: 100vw;
+                                margin-left: calc(-50vw + 50%);
+                            }}
+                            .shift-table th, .shift-table td {{
+                                padding: 8px 5px;
+                                font-size: 12.5px;
+                            }}
+                            .shift-table th {{
+                                font-size: 13px;
+                                padding: 9px 5px;
+                            }}
+                            .shift-table td {{min-width: 76px;}}
+                            .shift-table th:first-child, .shift-table td:first-child {{min-width: 106px;}}
+                        }}
                     </style>
                     <div class="table-wrapper">
                         <table class="shift-table">
