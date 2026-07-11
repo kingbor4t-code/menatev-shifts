@@ -410,6 +410,13 @@ if page == "שיבוץ":
                     model.Add(sum(weekday_shift_vars) == 0).OnlyEnforceIf(has_weekday_shift.Not())
                     all_violations.append(has_weekday_shift.Not() * 300)
                 else:
+                    weekend_shift_vars = [shifts[(s_idx, d, sh)] for d in weekend_days for sh in range(num_shifts)]
+                    weekend_shift_count = model.NewIntVar(0, len(weekend_shift_vars), f'weekend_shift_count_{s_idx}')
+                    model.Add(weekend_shift_count == sum(weekend_shift_vars))
+                    target_weekend_assignments = max(1, (len(weekend_days) * num_shifts) // max(1, closers_count))
+                    weekend_diff = model.NewIntVar(0, len(weekend_shift_vars), f'weekend_diff_{s_idx}')
+                    model.AddAbsEquality(weekend_diff, weekend_shift_count - target_weekend_assignments)
+                    all_violations.append(weekend_diff * 200)
                     for shift_var in weekday_shift_vars:
                         all_violations.append(shift_var * 250)
 
