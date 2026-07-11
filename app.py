@@ -623,10 +623,10 @@ if page == "שיבוץ":
                         }}
                         .shift-table th, .shift-table td {{
                             border: 1px solid #555;
-                            padding: 9px 5px;
+                            padding: 8px 4px;
                             text-align: center;
-                            font-size: 13px;
-                            line-height: 1.2;
+                            font-size: 12px;
+                            line-height: 1.25;
                             word-break: break-word;
                             overflow-wrap: break-word;
                             font-weight: 500;
@@ -635,12 +635,12 @@ if page == "שיבוץ":
                             background: #1f2937;
                             color: #fff;
                             font-weight: 700;
-                            font-size: 14px;
-                            padding: 10px 4px;
+                            font-size: 13px;
+                            padding: 9px 4px;
                         }}
                         .shift-table tr:nth-child(even) {{background: rgba(255,255,255,0.02);}}
-                        .shift-table td {{min-width: 65px;}}
-                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 95px;}}
+                        .shift-table td {{min-width: 72px;}}
+                        .shift-table th:first-child, .shift-table td:first-child {{min-width: 102px;}}
                     </style>
                     <div class="table-wrapper">
                         <table class="shift-table">
