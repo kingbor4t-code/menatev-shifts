@@ -426,10 +426,13 @@ if page == "שיבוץ":
                 afters = c.execute('SELECT after_day FROM soldier_afters WHERE soldier_id = ?', (soldier_id,)).fetchall()
                 for after_row in afters:
                     after_day = after_row[0]
-                    model.Add(sum(shifts[(s_idx, after_day, sh)] for sh in range(num_shifts)) == 0)
-                    if after_day - 1 >= 0:
+                    for sh in range(num_shifts):
+                        if (after_day, sh) in required_shift_keys:
+                            continue
+                        model.Add(shifts[(s_idx, after_day, sh)] == 0)
+                    if after_day - 1 >= 0 and (after_day - 1, 3) not in required_shift_keys:
                         model.Add(shifts[(s_idx, after_day - 1, 3)] == 0)
-                    if after_day + 1 < num_days:
+                    if after_day + 1 < num_days and (after_day + 1, 0) not in required_shift_keys:
                         model.Add(shifts[(s_idx, after_day + 1, 0)] == 0)
 
                 vacations = c.execute('SELECT vacation_start, vacation_end FROM soldier_vacations WHERE soldier_id = ?', (soldier_id,)).fetchall()
